@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <style>
+          body {
+          background-color: whitesmoke;
+          opacity: 50;
+          color: darkslategray;
+          font-family: Arial, sans-serif;
+          }
+          
+         .welcome {
+          width: auto; 
+          color: darkslategray;
+          text-align: center;
+          float: center; 
+          font-size: 20px;
+          margin: 0 auto;  
+          overflow: hidden; 
+          white-space: nowrap; 
+          }
+          
+          .menu-bar {
+           margin: 10px 10px 10px 10px;
+          }
+  
+         .menu-bar a {
+          color: darkslategray;
+          padding: 10px 20px;
+          border: 2px solid darkslategray;
+          text-decoration: none;
+          border-radius: 20px;
+          margin: 15px;
+         }
+        
+        .menu-bar a:hover {
+          background-color: darkslategray;
+          color: whitesmoke;
+        }
+        .profil {
+          text-align: center;
+          font-size: 15px;
+       }
+        .profil, p {
+          margin-bottom: 40px;
+        }
+        .wrapper{ 
+          width: 200PX;
+          text-align: center;
+          margin: 50px auto;
+          background: darkslategray;
+          color: whitesmoke;
+          padding: 15px;
+          border-radius: 5px;
+        }
+        #jam_aktif{
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
+      </style>
+      
+    <script type="text/javascript">
+    window.setTimeout("jam_aktif()", 1000);
+    function jam_aktif() {
+    var jam_aktif = new Date();
+        setTimeout("jam_aktif()", 1000);
+        var jam = jam_aktif.getHours();
+        var menit = jam_aktif.getMinutes();
+        var detik = jam_aktif.getSeconds();
+
+        if (jam<12) {
+            document.getElementById("pm_am").innerHTML = 'AM';
+        } else if (jam>12) {
+            document.getElementById("pm_am").innerHTML = 'PM';
+        }
+
+        if (jam==0) {
+            document.getElementById("jam").innerHTML = '0'+jam;
+        } else if (jam<10) {
+            document.getElementById("jam").innerHTML = '0'+jam;
+        } else if (jam==10) {
+            document.getElementById("jam").innerHTML = jam_aktif.getHours();
+        } else if (jam>10) {
+            document.getElementById("jam").innerHTML = jam_aktif.getHours();
+        } 
+
+        if (menit==0) {
+            document.getElementById("menit").innerHTML = '0'+menit;
+        } else if (menit<10) {
+            document.getElementById("menit").innerHTML = '0'+menit;
+        } else if (menit==10) {
+            document.getElementById("menit").innerHTML = jam_aktif.getMinutes();
+        } else if (menit>10) {
+            document.getElementById("menit").innerHTML = jam_aktif.getMinutes();
+        }
+
+        if (detik==0) {
+            document.getElementById("detik").innerHTML = '0'+detik;
+        } else if (detik<10) {
+            document.getElementById("detik").innerHTML = '0'+detik;
+        } else if (detik==10) {
+            document.getElementById("detik").innerHTML = jam_aktif.getSeconds();
+        } else if (detik>10) {
+            document.getElementById("detik").innerHTML = jam_aktif.getSeconds();
+        } }
+    </script> 
+    </head>
+  
+    <body>
+      <div class="wrapper">
+        <div id="jam_aktif">
+            <label id="jam"></label> :
+            <label id="menit"></label> :
+            <label id="detik"></label> 
+            <label id="pm_am"></label>
+        </div>
+
+        <?php 
+            $tgl = date("Y-m-d");
+            function merubah_tanggal($tgl){
+            $bulan = array (
+              1 =>   'Januari',
+              'Februari',
+              'Maret',
+              'April',
+              'Mei',
+              'Juni',
+              'Juli',
+              'Agustus',
+              'September',
+              'Oktober',
+              'November',
+              'Desember'
+            );
+            $pecahkan = explode('-', $tgl);
+            return $pecahkan[2] . '/' . $bulan[ (int)$pecahkan[1] ] . '/' . $pecahkan[0];
+            } 
+        ?>
+        <div id="tgl_hari_ini">
+            <label><?php echo merubah_tanggal($tgl) ?></label>
+        </div>
+      </div>
+      <div class='welcome'>
+        <h2>SELAMAT DATANG DI LARAVEL SAYA</h2>
+      </div>
+      <div class='profil'>
+        <p>Annisa Tri Ning Tyas <br>
+          09031282126057 <br>
+          Sistem Informasi Bilingual A</p>
+
+        <div class='menu-bar'>
+            <a href="profile">Profile</a>
+            <a href="portofolio">Portofolio</a>
+            <a href="hubungi_saya">Hubungi Saya</a>
+        </div>
+      </div>
+    </body>
+</html>
